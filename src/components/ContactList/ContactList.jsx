@@ -3,11 +3,11 @@
 import { ListBox } from './ContactList.styled';
 import { Contact } from 'components';
 import { useSelector } from 'react-redux';
-import { getContactsSelector } from 'redux/constactsSlice';
+import { getFilterSelector, getContactsSelector } from '../../redux';
 
 export function ContactList() {
-  const contacts = useSelector(state => getContactsSelector(state));
-  const filter = useSelector(state => state.filter);
+  const contacts = useSelector(getContactsSelector);
+  const filter = useSelector(getFilterSelector);
 
   const filteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
