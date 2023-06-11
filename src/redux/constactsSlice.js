@@ -4,9 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: {
-    contacts: [],
-  },
+  initialState: [],
   reducers: {
     addContact(state, action) {
       const newContact = {
@@ -14,19 +12,16 @@ export const contactsSlice = createSlice({
         id: nanoid(),
         number: action.payload.number,
       };
-      const isContactExists = state.contacts.some(
+      const isContactExists = state.some(
         contact =>
           contact.name.toLowerCase() === action.payload.name.toLowerCase()
       );
-      if (isContactExists) {
-        return alert(`${action.payload.name} is already in contacts`);
-      }
-      state.contacts = [newContact, ...state.contacts];
+      return isContactExists
+        ? alert(`${action.payload.name} is already in contacts`)
+        : (state = [newContact, ...state]);
     },
     deleteContact(state, action) {
-      state.contacts = state.contacts.filter(
-        contact => contact.id !== action.payload
-      );
+      return (state = state.filter(contact => contact.id !== action.payload));
     },
   },
 });

@@ -5,10 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setFilterValue } from 'redux/filterSlice';
 
 export default function Filter() {
+  const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
-
-  const { filter } = useSelector(state => state.filter);
-  console.log('name:', filter);
 
   const handleFilterChange = ({ target: { value } }) => {
     dispatch(setFilterValue(value));

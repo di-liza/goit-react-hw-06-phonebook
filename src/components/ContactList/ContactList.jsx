@@ -5,11 +5,13 @@ import Contact from 'components/Contact';
 import { useSelector } from 'react-redux';
 
 export default function ContactList() {
-  const { contacts } = useSelector(state => state.contacts);
-  const { filter } = useSelector(state => state.filter);
+  const contacts = useSelector(state => state.contacts);
+  const filter = useSelector(state => state.filter);
+
   const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter)
+    contact.name.toLowerCase().includes(filter.toLowerCase())
   );
+
   return (
     <>
       <ListBox>
