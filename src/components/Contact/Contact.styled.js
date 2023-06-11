@@ -43,7 +43,7 @@ export const Item = styled.li`
     height: 30px;
     border: none;
     outline: none;
-    background: #2f2f2f;
+    background: #090320;
     color: #988989;
     font-size: 15px;
     border-radius: 40px;
@@ -51,7 +51,7 @@ export const Item = styled.li`
     box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
     overflow: hidden;
     :hover {
-      background-color: #080710;
+      background-color: #160646;
       color: #ffffff;
     }
   }
