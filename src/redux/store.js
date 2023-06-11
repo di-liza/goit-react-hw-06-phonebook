@@ -1,10 +1,10 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { contactsSlice } from './constactsSlice';
-import { filterSlice } from './filterSlice';
-import { persistReducer } from 'redux-persist';
+
+import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import { persistStore } from 'redux-persist';
+import { contactsSlice } from './constactsSlice';
+import { filterSlice } from './filterSlice';
 
 import {
   FLUSH,
