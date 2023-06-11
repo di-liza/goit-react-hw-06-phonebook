@@ -6,8 +6,10 @@ export const filterSlice = createSlice({
     filter: '',
   },
   reducers: {
-    filter(state, action) {},
+    setFilterValue(state, action) {
+      state.filter = action.payload.toLowerCase();
+    },
   },
 });
 
-export const { filter } = filterSlice.actions;
+export const { setFilterValue } = filterSlice.actions;

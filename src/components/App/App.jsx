@@ -3,7 +3,7 @@
 
 import ContactForm from '../ContactForm';
 import ContactList from '../ContactList';
-// import Filter from '../Filter';
+import Filter from '../Filter';
 // import Notification from '../Notification';
 
 import { Container } from './App.styled.js';
@@ -63,6 +63,7 @@ export default function App() {
       <div className="contactsWrapper">
         <h1 className="title">Contacts</h1>
         <div>
+          <Filter />
           {/* <Filter name={filter} onChangeInput={handleFilterChange} />
           {value.length !== 0 ? ( */}
           <ContactList />

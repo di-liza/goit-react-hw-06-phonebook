@@ -6,12 +6,16 @@ import { useSelector } from 'react-redux';
 
 export default function ContactList() {
   const { contacts } = useSelector(state => state.contacts);
+  const { filter } = useSelector(state => state.filter);
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter)
+  );
   return (
     <>
       <ListBox>
         <ul>
-          {contacts.length !== 0 &&
-            contacts.map(contact => {
+          {filteredContacts.length !== 0 &&
+            filteredContacts.map(contact => {
               return <Contact key={contact.id} contact={contact} />;
             })}
         </ul>
