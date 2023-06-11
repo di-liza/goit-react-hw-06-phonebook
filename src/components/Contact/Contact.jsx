@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { Item } from './Contact.styled';
 import { ReactComponent as DeleteIcon } from '../icons/delete.svg';
@@ -26,9 +26,10 @@ export function Contact({ contact }) {
   );
 }
 
-// Contact.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   id: PropTypes.string.isRequired,
-//   number: PropTypes.string.isRequired,
-//   handleDeleteBTN: PropTypes.func.isRequired,
-// };
+Contact.propTypes = {
+  contact: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  }).isRequired,
+};
