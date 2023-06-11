@@ -5,7 +5,7 @@ import { ReactComponent as DeleteIcon } from '../icons/delete.svg';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/constactsSlice';
 
-export default function Contact({ contact }) {
+export function Contact({ contact }) {
   const dispatch = useDispatch();
   return (
     <Item>

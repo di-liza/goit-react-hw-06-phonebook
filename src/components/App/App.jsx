@@ -1,13 +1,14 @@
 import { useSelector } from 'react-redux';
 
-import ContactForm from '../ContactForm';
-import ContactList from '../ContactList';
-import Filter from '../Filter';
-import Notification from '../Notification';
+// import ContactForm from '../ContactForm';
+// import ContactList from '../ContactList';
+// import Filter from '../Filter';
+// import Notification from '../Notification';
 
+import { ContactForm, ContactList, Filter, Notification } from 'components';
 import { Container } from './App.styled.js';
 
-export default function App() {
+export function App() {
   const contacts = useSelector(state => state.contacts);
 
   return (

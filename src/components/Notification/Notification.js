@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export default function Notification({ text }) {
+export function Notification({ text }) {
   return <p>{text}</p>;
 }
 

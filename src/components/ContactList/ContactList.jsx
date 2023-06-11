@@ -1,11 +1,11 @@
 // import PropTypes, { shape } from 'prop-types';
 
 import { ListBox } from './ContactList.styled';
-import Contact from 'components/Contact';
+import { Contact } from 'components';
 import { useSelector } from 'react-redux';
 import { getContactsSelector } from 'redux/constactsSlice';
 
-export default function ContactList() {
+export function ContactList() {
   const contacts = useSelector(state => getContactsSelector(state));
   const filter = useSelector(state => state.filter);
 

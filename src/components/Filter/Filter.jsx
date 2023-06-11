@@ -4,7 +4,7 @@ import { FilterBox } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilterValue } from 'redux/filterSlice';
 
-export default function Filter() {
+export function Filter() {
   const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
