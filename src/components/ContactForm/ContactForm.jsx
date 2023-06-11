@@ -1,32 +1,38 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 // import PropTypes, { shape } from 'prop-types';
+import { nanoid } from 'nanoid';
 
 import { Form } from './ContactForm.styled';
 import { addContact } from 'redux/constactsSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContactsSelector } from '../../redux';
 
 export function ContactForm() {
+  const contacts = useSelector(getContactsSelector);
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
 
-  const handleInputName = ({ target: { value } }) => {
-    setName(value);
-  };
-
-  const handleInputTel = ({ target: { value } }) => {
-    setNumber(value);
-  };
-
-  const resetForm = () => {
-    setName('');
-    setNumber('');
-  };
+  // const resetForm = () => {
+  //   // setName('');
+  //   // setNumber('');
+  // };
   const handleContactFormSubmit = e => {
     e.preventDefault();
 
-    dispatch(addContact({ name, number }));
-    resetForm();
+    const newContact = {
+      name: e.currentTarget.elements.name.value,
+      id: nanoid(),
+      number: e.currentTarget.elements.number.value,
+    };
+
+    const isContactExists = contacts.some(
+      contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
+    );
+    if (isContactExists) {
+      return alert(`${newContact.name} is already in contacts`);
+    }
+
+    dispatch(addContact(newContact));
+    e.currentTarget.reset();
   };
 
   return (
@@ -39,10 +45,10 @@ export function ContactForm() {
             </label>
             <input
               className="styled-input"
-              onChange={handleInputName}
+              // onChange={handleInputName}
               type="text"
               name="name"
-              value={name}
+              // value={
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               placeholder="Enter name"
@@ -55,10 +61,10 @@ export function ContactForm() {
             </label>
             <input
               className="styled-input"
-              onChange={handleInputTel}
+              // onChange={handleInputTel}
               type="tel"
               name="number"
-              value={number}
+              // value={number}
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               placeholder="Enter phone number"
