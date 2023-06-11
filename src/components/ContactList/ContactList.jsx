@@ -3,9 +3,10 @@
 import { ListBox } from './ContactList.styled';
 import Contact from 'components/Contact';
 import { useSelector } from 'react-redux';
+import { getContactsSelector } from 'redux/constactsSlice';
 
 export default function ContactList() {
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(state => getContactsSelector(state));
   const filter = useSelector(state => state.filter);
 
   const filteredContacts = contacts.filter(contact =>
